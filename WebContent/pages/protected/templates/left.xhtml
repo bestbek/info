@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+	<ui:composition>
+		<h:form>
+			<!-- <p:commandButton styleClass="menuButton" icon="ui-icon-arrowstop-1-e" rendered="#{userMB.admin or userMB.defaultUser}" action="/pages/protected/defaultUser/defaultUserIndex.xhtml" value="#{bundle.personPlural}" ajax="false" immediate="true" />
+			<br />
+			 -->
+			 
+			 <p:commandButton styleClass="menuButton" icon="ui-icon-arrowstop-1-e" rendered="#{userMB.defaultUser}" action="#{staffMB.attr()}" value="#{bundle.staffPlural}" ajax="false" immediate="true" >
+			 	 <f:setPropertyActionListener target="#{staffMB.userId}" value="#{userMB.user.id}"/> 
+			 </p:commandButton>
+			<br />
+			<p:commandButton styleClass="menuButton" icon="ui-icon-arrowstop-1-e" rendered="#{userMB.admin}" action="/pages/protected/admin/organization/organization.xhtml" value="#{bundle.organizationPlural}" ajax="false" immediate="true" />
+			<br />
+			<p:commandButton styleClass="menuButton" icon="ui-icon-arrowstop-1-e" rendered="#{userMB.admin}" action="/pages/protected/admin/user/user.xhtml" value="#{bundle.userPlural}" ajax="false" immediate="true" />
+			<br />
+			<p:commandButton styleClass="menuButton" icon="ui-icon-arrowstop-1-e" rendered="#{userMB.admin}" action="/pages/protected/admin/provovForma/provovForma.xhtml" value="#{bundle.pfPlural}" ajax="false" immediate="true" />
+			<br />
+		<!-- 	<p:commandButton styleClass="menuButton" icon="ui-icon-arrowstop-1-e" rendered="#{userMB.admin}" action="/pages/protected/admin/upload/upload.xhtml" value="#{bundle.upload}" ajax="false" immediate="true" />
+			<br /> -->
+		</h:form>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="staffUpdateDialogWidget"
+		id="staffUpdateDialogId" height="500" width="600" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="staffUpdateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+			
+			<h:outputText value="* #{bundle.staffName}" />
+				<h:inputText value="#{staffMB.staff.name}" required="true" label="#{bundle.staffName}" />
+				
+				<h:outputText value="* #{bundle.staffEmail}" />
+				<h:inputText value="#{staffMB.staff.email}" required="true" label="#{bundle.staffEmail}" />
+				
+				<h:outputText value="* #{bundle.staffHomePhone}" />
+				<h:inputText value="#{staffMB.staff.homePhone}" required="true" label="#{bundle.staffHomePhone}" />
+			
+				<h:outputText value="* #{bundle.staffMobilePhone}" />
+				<h:inputText value="#{staffMB.staff.mobilePhone}" required="true" label="#{bundle.staffMobilePhone}" />
+			
+				<h:outputText value="* #{bundle.staffWorkingPhone}" />
+				<h:inputText value="#{staffMB.staff.workingPhone}" required="true" label="#{bundle.staffWorkingPhone}" />
+			
+				<h:outputText value="* #{bundle.staffHomeAddress}" />
+				<h:inputText value="#{staffMB.staff.homeAddress}" required="true" label="#{bundle.staffHomeAddress}" />
+			
+				<h:outputText value="* #{bundle.staffWebsite}" />
+				<h:inputText value="#{staffMB.staff.website}" required="true" label="#{bundle.staffWebsite}" />
+			
+				<h:outputText value="* #{bundle.staffBankRekvezit}" />
+				<h:inputText value="#{staffMB.staff.bankRekvezit}" required="true" label="#{bundle.staffBankRekvezit}" />
+			
+				<h:outputText value="* #{bundle.staffPosition}" />
+				<h:inputText value="#{staffMB.staff.position}" required="true" label="#{bundle.staffPosition}" />
+		
+				
+				<p:commandButton value="#{bundle.update}" icon="ui-icon-plus"
+					action="#{staffMB.updateStaff()}"
+					update=":messageGrowl :staffsForm:staffsTable"
+					oncomplete="closeDialogIfSucess(xhr, status, args, staffUpdateDialogWidget, 'staffUpdateDialogId')" />
+				<p:commandButton value="#{bundle.cancel}" icon="ui-icon-cancel" actionListener="#{staffMB.resetStaff()}"
+					onclick="staffUpdateDialogWidget.hide();" type="button" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

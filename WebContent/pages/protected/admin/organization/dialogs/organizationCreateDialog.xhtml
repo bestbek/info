@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="organizationCreateDialogWidget"
+		id="organizationCreateDialogId" height="500" width="600" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="organizationCreateDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+			
+	<h:outputText value="* #{bundle.organizationName}" />
+				<h:inputText value="#{organizationMB.organization.organizationName}" required="true" label="#{bundle.organizationName}" />
+
+		<h:outputText value="* #{bundle.legalForm}" />
+				<h:inputText value="#{organizationMB.organization.legalForm}" required="true" label="#{bundle.legalForm}" />
+		
+		<h:outputText value="* #{bundle.ceoName}" />
+				<h:inputText value="#{organizationMB.organization.ceoName}" required="true" label="#{bundle.ceoName}" />
+		
+		<h:outputText value="* #{bundle.fax}" />
+				<h:inputText value="#{organizationMB.organization.fax}" required="true" label="#{bundle.fax}" />
+		
+		<h:outputText value="* #{bundle.phone}" />
+				<h:inputText value="#{organizationMB.organization.phone}" required="true" label="#{bundle.phone}" />
+		
+		<h:outputText value="* #{bundle.website}" />
+				<h:inputText value="#{organizationMB.organization.website}" required="true" label="#{bundle.website}" />
+
+		<h:outputText value="* #{bundle.licenseNumber}" style="width:280px;"/>
+				<h:inputText value="#{organizationMB.organization.licenseNumber}" required="true" label="#{bundle.licenseNumber}" />
+		
+		<h:outputText value="* #{bundle.obtainedLicenseDate}" />
+		<p:calendar value="#{organizationMB.organization.obtainedLicenseDate}"></p:calendar>
+		
+		
+		<h:outputText value="* #{bundle.obtainedSvidetelstvaDate}" />
+		<p:calendar value="#{organizationMB.organization.obtainedSvidetelstvaDate}"></p:calendar>
+		
+		<h:outputText value="* #{bundle.address}" />
+		<h:inputText value="#{organizationMB.organization.address}" required="true" label="#{bundle.address}" />
+	
+		<p:outputLabel for="orgPF"  value="* #{bundle.pf}" />
+			<p:selectOneMenu style="width:250px;" id="orgPF" value="#{organizationMB.organization.provovForma}" required="true" label="#{bundle.pf}" 
+				converter="provovFormaConverter" effect="fade" filter="true" var="p">
+				<f:selectItems value="#{organizationMB.provovFormas}" var="provovForma" itemLabel="#{provovForma.name}" itemValue="#{provovForma}"></f:selectItems>
+				<p:column>
+					<h:outputText value="#{p.name}"/>
+				</p:column>
+			</p:selectOneMenu>
+			
+			
+		<p:outputLabel for="userM"  value="* #{bundle.user}" />
+			<p:selectOneMenu style="width:250px;" id="userM" value="#{organizationMB.organization.user}" required="true" label="#{bundle.user}" 
+				converter="userConverter" effect="fade" filter="true" var="u">
+				<f:selectItems value="#{organizationMB.users}" var="user" itemLabel="#{user.name}" itemValue="#{user}"></f:selectItems>
+				<p:column>
+					<h:outputText value="#{u.name}"/>
+				</p:column>
+			</p:selectOneMenu>
+		
+				<p:commandButton value="#{bundle.create}" icon="ui-icon-plus"
+					action="#{organizationMB.createOrganization()}"
+					update=":messageGrowl :organizationsForm:organizationsTable"
+					oncomplete="closeDialogIfSucess(xhr, status, args, organizationCreateDialogWidget, 'organizationCreateDialogId')" />
+				<p:commandButton value="#{bundle.cancel}" icon="ui-icon-cancel" actionListener="#{organizationMB.resetOrganization()}"
+					onclick="organizationCreateDialogWidget.hide();" type="button" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

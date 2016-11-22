@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="organizationDetailDialogWidget" id="organizationDetailDialogId" height="500" width="600" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="organizationDetailDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+				<h:outputText value="#{bundle.organizationName}" />
+				<h:outputText value="#{organizationMB.organization.organizationName}" />
+				
+				<h:outputText value="#{bundle.legalForm}" />
+				<h:outputText value="#{organizationMB.organization.legalForm}" />
+
+				<h:outputText value="#{bundle.ceoName}" />
+				<h:outputText value="#{organizationMB.organization.ceoName}" />
+
+				<h:outputText value="#{bundle.fax}" />
+				<h:outputText value="#{organizationMB.organization.fax}" />
+
+				<h:outputText value="#{bundle.phone}" />
+				<h:outputText value="#{organizationMB.organization.phone}" />
+
+				<h:outputText value="#{bundle.website}" />
+				<h:outputText value="#{organizationMB.organization.website}" />
+
+				<h:outputText value="#{bundle.licenseNumber}" />
+				<h:outputText value="#{organizationMB.organization.licenseNumber}" />
+
+				<h:outputText value="#{bundle.address}" />
+				<h:outputText value="#{organizationMB.organization.address}" />
+
+				<h:outputText value="#{bundle.obtainedLicenseDate}" />
+				<h:outputText value="#{organizationMB.organization.obtainedLicenseDate}" />
+
+				<h:outputText value="#{bundle.obtainedSvidetelstvaDate}" />
+				<h:outputText value="#{organizationMB.organization.obtainedSvidetelstvaDate}" />
+
+				<p:commandButton value="#{bundle.ok}" icon="ui-icon-arrow-1-w"
+				 actionListener="#{organizationMB.resetOrganization()}"
+					onclick="organizationDetailDialogWidget.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

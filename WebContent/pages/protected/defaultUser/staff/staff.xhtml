@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/pages/protected/templates/master.xhtml">
+		<ui:define name="divMain">
+			<h:form id="staffsForm">
+				<p:commandButton value="#{bundle.create} #{bundle.staff}"
+					icon="ui-icon-plus" update=":staffCreateDialogForm"
+					actionListener="#{staffMB.resetStaff()}"
+					onclick="staffCreateDialogWidget.show();" /> 
+					
+				<p:dataTable id="staffsTable" value="#{staffMB.sortedStaffList}" var="staff"
+					emptyMessage="#{bundle.noRecords}" paginator="true" rows="10"
+					paginatorPosition="bottom"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.staffName}" />
+						</f:facet>
+						<h:outputText value="#{staff.name}" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{bundle.staffPosition}" />
+						</f:facet>
+						<h:outputText value="#{staff.position}" />
+					</p:column>
+					
+					<p:column>
+					 	<p:commandButton value="#{bundle.detail}" icon="ui-icon-bullet"
+							onclick="staffDetailDialogWidget.show();"
+							update=":staffDetailDialogForm">
+							<f:setPropertyActionListener target="#{staffMB.staff}" value="#{staff}" />
+						</p:commandButton>
+						<p:spacer width="10px" />
+						
+						<p:commandButton value="#{bundle.update}" icon="ui-icon-pencil"
+							update=":staffUpdateDialogForm"
+							onclick="staffUpdateDialogWidget.show();">
+							<f:setPropertyActionListener target="#{staffMB.staff}" value="#{staff}" />
+						</p:commandButton>
+						<p:spacer width="10px" /> 
+						
+						<p:commandButton value="#{bundle.delete}" icon="ui-icon-trash"
+							update=":staffDeleteDialogForm"
+							onclick="staffDeleteDialogWidget.show();">
+							<f:setPropertyActionListener target="#{staffMB.staff}" value="#{staff}" />
+						</p:commandButton> 
+					</p:column>
+
+				</p:dataTable>
+			 	
+			</h:form>
+
+		 	<ui:include
+				src="/pages/protected/defaultUser/staff/dialogs/staffCreateDialog.xhtml" />
+			<ui:include
+				src="/pages/protected/defaultUser/staff/dialogs/staffDetailDialog.xhtml" />
+				<ui:include
+				src="/pages/protected/defaultUser/staff/dialogs/staffDeleteDialog.xhtml" />  
+			<ui:include
+				src="/pages/protected/defaultUser/staff/dialogs/staffUpdateDialog.xhtml" /> 
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

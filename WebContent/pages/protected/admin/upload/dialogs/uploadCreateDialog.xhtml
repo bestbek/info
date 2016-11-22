@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="uploadCreateDialogWidget"
+		id="uploadCreateDialogId" height="300" width="800" modal="true"
+		closable="true" draggable="false" resizable="false">
+		<h:form id="uploadCreateDialogForm" prependId="false" enctype="multipart/form-data">
+			<h:panelGrid columns="2">
+				
+				<p:fileUpload value="#{uploadMB.uploadedFile}" fileUploadListener="#{uploadMB.uploadHandler}" description="Select Files" multiple="true" />
+				
+<!-- 				<h:outputText value="* #{bundle.uploadName}" />
+				<h:inputText value="#{uploadMB.upload.path}" required="true" label="#{bundle.upload}" />
+
+				<h:outputText value="* #{bundle.uploadAge}" />
+				<h:inputText value="#{uploadMB.upload.organization.organizationName}" required="true" label="#{bundle.upload}" />
+				 -->
+				 <!-- :messageGrowl -->
+				<p:commandButton value="#{bundle.create}" icon="ui-icon-plus"
+					action="#{uploadMB.createUpload()}"
+					update=" :messageGrowl:uploadsForm:uploadsTable"
+					oncomplete="closeDialogIfSucess(xhr, status, args, uploadCreateDialogWidget, 'uploadCreateDialogId')" />
+				<p:commandButton value="#{bundle.cancel}" icon="ui-icon-cancel" actionListener="#{uploadMB.resetUpload()}"
+					onclick="uploadCreateDialogWidget.hide();" type="button" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

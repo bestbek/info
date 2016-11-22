@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<p:dialog widgetVar="staffDetailDialogWidget" id="staffDetailDialogId"
+		height="500" width="600" modal="true" closable="true"
+		draggable="false" resizable="false">
+		<h:form id="staffDetailDialogForm" prependId="false">
+			<h:panelGrid columns="2">
+
+				<h:outputText value="#{bundle.staffName}"/>
+				<h:outputText value="#{staffMB.staff.name}"/>
+				
+				<h:outputText value="#{bundle.staffEmail}"/>
+				<h:outputText value="#{staffMB.staff.email}"/>
+				
+				<h:outputText value="#{bundle.staffHomePhone}"/>
+				<h:outputText value="#{staffMB.staff.homePhone}" />
+			
+				<h:outputText value="#{bundle.staffMobilePhone}"/>
+				<h:outputText value="#{staffMB.staff.mobilePhone}"/>
+			
+				<h:outputText value="#{bundle.staffWorkingPhone}"/>
+				<h:outputText value="#{staffMB.staff.workingPhone}"/>
+			
+				<h:outputText value="#{bundle.staffHomeAddress}" />
+				<h:outputText value="#{staffMB.staff.homeAddress}"/>
+			
+				<h:outputText value="#{bundle.staffWebsite}"/>
+				<h:outputText value="#{staffMB.staff.website}"/>
+			
+				<h:outputText value="#{bundle.staffBankRekvezit}" />
+				<h:outputText value="#{staffMB.staff.bankRekvezit}"/>
+			
+				<h:outputText value="#{bundle.staffPosition}" />
+				<h:outputText value="#{staffMB.staff.position}"/>
+		
+				<h:outputText value="#{bundle.organization}" />
+				<h:outputText value="#{staffMB.staff.organization.organizationName}"/>
+		
+				<p:commandButton value="#{bundle.ok}" icon="ui-icon-arrow-1-w"
+					actionListener="#{staffMB.resetStaff()}"
+					onclick="staffDetailDialogWidget.hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>
